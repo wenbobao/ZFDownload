@@ -99,6 +99,11 @@
     [_realRequest startAsynchronous];
 }
 
+- (void)redirectToURL:(NSURL *)redirectURL
+{
+    [_realRequest redirectToURL:redirectURL];
+}
+
 #pragma mark - ASIHttpDelegate
 
 - (void)requestStarted:(ASIHTTPRequest *)request
@@ -121,13 +126,14 @@
         [self.delegate request:self didReceiveBytes:bytes];
     }
 }
+
 - (void)request:(ASIHTTPRequest *)request willRedirectToURL:(NSURL *)newURL
 {
-    [request redirectToURL:newURL];
     if (self.delegate&&[self.delegate respondsToSelector:@selector(request:willRedirectToURL:)]) {
         [self.delegate request:self willRedirectToURL:newURL];
     }
 }
+
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     if (self.delegate&&[self.delegate respondsToSelector:@selector(requestFinished:)]) {

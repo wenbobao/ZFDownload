@@ -53,4 +53,6 @@
 - (BOOL)isFinished;
 - (BOOL)isExecuting;
 - (void)cancel;
+// add by wenbo
+- (void)redirectToURL:(NSURL *)redirectURL;
 @end

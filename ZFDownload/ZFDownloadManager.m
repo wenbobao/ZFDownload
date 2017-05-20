@@ -69,6 +69,7 @@ static ZFDownloadManager *sharedDownloadManager = nil;
         _downinglist = [[NSMutableArray alloc] init];
         _finishedlist = [[NSMutableArray alloc] init];
         _count = 0;
+        _supportRedirectURL = YES;
         [self loadFinishedfiles];
         [self loadTempfiles];
     }
@@ -590,6 +591,12 @@ static ZFDownloadManager *sharedDownloadManager = nil;
 {
     if (newURL) {
         NSLog(@"重定向URL:%@", newURL);
+        if (_supportRedirectURL) {
+            [request redirectToURL:newURL];
+        }
+        else {
+            [request cancel];
+        }
     }
 }
 

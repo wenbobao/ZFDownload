@@ -46,6 +46,8 @@
 @property (atomic, strong, readonly) NSMutableArray  *filelist;
 /** 下载文件的模型 */
 @property (nonatomic, strong, readonly) ZFFileModel  *fileInfo;
+/** 支持URL重定向 默认为YES*/
+@property (nonatomic, assign) BOOL supportRedirectURL;
 
 /** 单例 */
 + (ZFDownloadManager *)sharedDownloadManager;
